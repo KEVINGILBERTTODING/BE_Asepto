@@ -1,0 +1,505 @@
+{
+	"info": {
+		"_postman_id": "c06d9af0-3af8-4491-a0b6-4cc3b50f3970",
+		"name": "managementKaryawan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login karyawan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nama\": \"test\",\r\n    \"email\": \"test@mail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost/management-karyawan/api/Index_Api/loginKaryawan"
+			},
+			"response": []
+		},
+		{
+			"name": "login admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"coba\",\r\n    \"password\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost/management-karyawan/api/Index_Api/loginAdmin"
+			},
+			"response": []
+		},
+		{
+			"name": "get data Project Admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/management-karyawan/api/Index_Api/dataProjectAdmin/id/PRJ-2022-00001"
+			},
+			"response": []
+		},
+		{
+			"name": "get data Catatan Tambahan Admin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/management-karyawan/api/Index_Api/getCatatanAdmin"
+			},
+			"response": []
+		},
+		{
+			"name": "getDataKaryawan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/management-karyawan/api/Index_Api/getKaryawanAdmin"
+			},
+			"response": []
+		},
+		{
+			"name": "edit data karyawan",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "karyawan",
+							"value": "sidul",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "sidul@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "telp",
+							"value": "33434323",
+							"type": "text"
+						},
+						{
+							"key": "norek",
+							"value": "5543446354454",
+							"type": "text"
+						},
+						{
+							"key": "bank",
+							"value": "BNI",
+							"type": "text"
+						},
+						{
+							"key": "jeniskel",
+							"value": "L",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost/management-karyawan/api/Index_Api/editKaryawan/id/KN-2022-00002"
+			},
+			"response": []
+		},
+		{
+			"name": "tambah project",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nama_project",
+							"value": "project 2",
+							"type": "text"
+						},
+						{
+							"key": "deskripsi",
+							"value": "deskripsi project 2",
+							"type": "text"
+						},
+						{
+							"key": "tgl_mulai",
+							"value": "2022-10-24 22:18:00",
+							"type": "text"
+						},
+						{
+							"key": "tgl_selesai",
+							"value": "2022-11-13 16:49:00",
+							"type": "text"
+						},
+						{
+							"key": "nama_perusahaan",
+							"value": "perusahaan digital",
+							"type": "text"
+						},
+						{
+							"key": "email_perusahaan",
+							"value": "project@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "tipe_perusahaan",
+							"value": "Small",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost/management-karyawan/api/Index_Api/tambahProject"
+			},
+			"response": []
+		},
+		{
+			"name": "edit project",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nama_project",
+							"value": "project 3",
+							"type": "text"
+						},
+						{
+							"key": "deskripsi",
+							"value": "deskripsi project 3",
+							"type": "text"
+						},
+						{
+							"key": "tgl_mulai",
+							"value": "2022-10-24 22:18:00",
+							"type": "text"
+						},
+						{
+							"key": "tgl_selesai",
+							"value": "2022-11-13 16:49:00",
+							"type": "text"
+						},
+						{
+							"key": "nama_perusahaan",
+							"value": "perusahaan digital3",
+							"type": "text"
+						},
+						{
+							"key": "email_perusahaan",
+							"value": "project3@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "tipe_perusahaan",
+							"value": "Small",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost/management-karyawan/api/Index_Api/editProject/id/PRJ-2022-00003"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProject",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost/management-karyawan/api/Index_Api/DeletedataProject/id/PRJ-2022-00002"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteKaryawan",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost/management-karyawan/api/Index_Api/deleteDataKaryawan/id/KN-2022-00003"
+			},
+			"response": []
+		},
+		{
+			"name": "tambahDataKaryawan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "karyawan",
+							"value": "fakhrudin",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "fakhrudin@mail.com",
+							"type": "text"
+						},
+						{
+							"key": "telp",
+							"value": "9812314",
+							"type": "text"
+						},
+						{
+							"key": "norek",
+							"value": "545745454564",
+							"type": "text"
+						},
+						{
+							"key": "bank",
+							"value": "BRI",
+							"type": "text"
+						},
+						{
+							"key": "jeniskel",
+							"value": "L",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost/management-karyawan/api/Index_Api/tambahDataKaryawan"
+			},
+			"response": []
+		},
+		{
+			"name": "tambahGajiKaryawan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "karyawan_id",
+							"value": "KN-2022-00001",
+							"type": "text"
+						},
+						{
+							"key": "tanggal_bayar",
+							"value": "2022-14-24 22:18:00",
+							"type": "text"
+						},
+						{
+							"key": "nominal_bonus",
+							"value": "2500000",
+							"type": "text"
+						},
+						{
+							"key": "nominal_dibayarkan",
+							"value": "4500000",
+							"type": "text"
+						},
+						{
+							"key": "bukti_transfer",
+							"type": "file",
+							"src": "/C:/Users/PC/Downloads/ss cpanel.jpeg"
+						}
+					]
+				},
+				"url": "http://localhost/management-karyawan/api/Index_Api/masukanDataPembayaran"
+			},
+			"response": []
+		},
+		{
+			"name": "editGajiKaryawan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "karyawan_id",
+							"value": "KN-2022-00001",
+							"type": "text"
+						},
+						{
+							"key": "tanggal_bayar",
+							"value": "2022-14-24 22:18:00",
+							"type": "text"
+						},
+						{
+							"key": "nominal_bonus",
+							"value": "2500000",
+							"type": "text"
+						},
+						{
+							"key": "nominal_dibayarkan",
+							"value": "4500000",
+							"type": "text"
+						},
+						{
+							"key": "bukti_transfer",
+							"type": "file",
+							"src": "/C:/Users/LENOVO/Downloads/WhatsApp Image 2023-05-22 at 10.02.38.jpeg"
+						},
+						{
+							"key": "admin_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost/management-karyawanfinal/api/Index_Api/editDataPembayaran/id/1"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteDataPembayaran",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost/management-karyawan/api/Index_Api/hapusdataPembayaran/id/PRJ-2022-00001"
+			},
+			"response": []
+		},
+		{
+			"name": "add feedback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nama_karyawan",
+							"value": "sidul",
+							"type": "text"
+						},
+						{
+							"key": "nama_project",
+							"value": "contoh",
+							"type": "text"
+						},
+						{
+							"key": "feedback",
+							"value": "test feedback",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost/management-karyawan/api/Index_Api/tambahDataFeedback"
+			},
+			"response": []
+		},
+		{
+			"name": "getProgressPekerjaan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/management-karyawan/api/Index_Api/getProgressPekerjaan/"
+			},
+			"response": []
+		},
+		{
+			"name": "getDataPembyaranKaryawan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/management-karyawan/api/Index_Api/getHasilPembayaran/id/KN-2022-00001"
+			},
+			"response": []
+		},
+		{
+			"name": "getProgressPekerjaanKaryawan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/management-karyawan/api/Index_Api/getProgressPekerjaanById/id/KN-2022-00001"
+			},
+			"response": []
+		},
+		{
+			"name": "tambahProgressKaryawan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "project_id",
+							"value": "PRJ-2022-00001",
+							"type": "text"
+						},
+						{
+							"key": "karyawan_id",
+							"value": "KN-2022-00001",
+							"type": "text"
+						},
+						{
+							"key": "progress",
+							"value": "sampai disini",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost/management-karyawan/api/Index_Api/tambahProgressPekerjaan"
+			},
+			"response": []
+		},
+		{
+			"name": "editProgressKaryawan",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "karyawan_id",
+							"value": "KN-2022-00001",
+							"type": "text"
+						},
+						{
+							"key": "nama_project",
+							"value": "contoh",
+							"type": "text"
+						},
+						{
+							"key": "progress",
+							"value": "selesai",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost/management-karyawanfinal/api/Index_Api/editProgressKaryawan/id/2"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteDataProgress",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost/management-karyawan/api/Index_Api/hapusdataPembayaran/id/7"
+			},
+			"response": []
+		},
+		{
+			"name": "getFeedbackKaryawan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost/management-karyawan/api/Index_Api/getFeedbackPekerjaanKaryawan/id/KN-2022-00001"
+			},
+			"response": []
+		}
+	]
+}
