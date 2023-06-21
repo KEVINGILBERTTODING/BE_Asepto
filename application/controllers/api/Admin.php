@@ -162,4 +162,64 @@ class Admin extends CI_Controller
 			echo json_encode($response);
 		}
 	}
+
+	function updateCatatan()
+	{
+		$id = $this->input->post('id');
+		$data = [
+			'catatan' => $this->input->post('catatan'),
+			'tanggal_event' => $this->input->post('tanggal_event'),
+		];
+		$update = $this->catatan_model->update($id, $data);
+		if ($update == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
+
+	function deleteCatatan()
+	{
+		$id = $this->input->post('id');
+		$delete = $this->catatan_model->delete($id);
+		if ($delete == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
+
+	function insertCatatan()
+	{
+		$catatanId = $this->catatan_model->get_new_id();
+		$data = [
+			'catatan_id' => $catatanId,
+			'catatan' => $this->input->post('catatan'),
+			'tanggal_event' => $this->input->post('tanggal')
+		];
+		$insert = $this->catatan_model->insert($data);
+		if ($insert == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
 }
