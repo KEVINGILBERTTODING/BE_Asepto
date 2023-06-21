@@ -43,7 +43,7 @@ class Auth extends CI_Controller
 				$response = [
 					'code' => 200,
 					'user_id' => $validateAdmin['admin_id'],
-					'role' => 2
+					'role' => 1
 				];
 				echo json_encode($response);
 			} else {

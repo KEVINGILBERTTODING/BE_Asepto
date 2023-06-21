@@ -14,6 +14,7 @@ class Karyawan extends CI_Controller
 		$this->load->model('api/progress_model');
 		$this->load->model('api/karyawan_model');
 		$this->load->model('api/feedback_model');
+		$this->load->model('api/catatan_model');
 	}
 
 	function getMyProject()
@@ -108,5 +109,10 @@ class Karyawan extends CI_Controller
 	{
 		$id  = $this->input->get('id');
 		echo json_encode($this->feedback_model->getFeedBckByUserId($id));
+	}
+
+	function getCatatan()
+	{
+		echo json_encode($this->catatan_model->getAllCatatan());
 	}
 }

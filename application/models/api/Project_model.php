@@ -35,4 +35,20 @@ class Project_model extends CI_Model
 		$this->db->where('project_id', $id);
 		return $this->db->get()->row_array();
 	}
+
+	function getProject($status)
+	{
+		if ($status == 'all') {
+			$this->db->select('*');
+			$this->db->from('project');
+			$this->db->order_by('id', 'desc');
+			return $this->db->get()->result();
+		} else {
+			$this->db->select('*');
+			$this->db->from('project');
+			$this->db->where('status', $status);
+			$this->db->order_by('id', 'desc');
+			return $this->db->get()->result();
+		}
+	}
 }
