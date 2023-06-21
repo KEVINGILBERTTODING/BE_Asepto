@@ -51,4 +51,33 @@ class Project_model extends CI_Model
 			return $this->db->get()->result();
 		}
 	}
+
+	function insertProject($data)
+	{
+		$insert = $this->db->insert('project', $data);
+		if ($insert) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function get_new_id()
+	{
+		$this->db->select('project_id');
+		$this->db->order_by('project_id', 'DESC');
+		$query = $this->db->get('project', 1);
+
+		if ($query->num_rows() > 0) {
+			$last_id = $query->row()->project_id;
+			$id_parts = explode('-', $last_id);
+			$increment = intval($id_parts[2]) + 1;
+		} else {
+			$increment = 1;
+		}
+
+		$new_id = 'PRJ-' . date('Y') . '-' . sprintf('%05d', $increment);
+
+		return $new_id;
+	}
 }

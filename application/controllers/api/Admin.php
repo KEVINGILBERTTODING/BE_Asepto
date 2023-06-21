@@ -30,7 +30,9 @@ class Admin extends CI_Controller
 
 	function insertKaryawan()
 	{
+		$id = $this->karyawan_model->get_new_id();
 		$data = [
+			'karyawan_id' => $id,
 			'nama' => $this->input->post('nama'),
 			'email' => $this->input->post('email'),
 			'jabatan' => $this->input->post('jabatan'),
@@ -210,6 +212,37 @@ class Admin extends CI_Controller
 			'tanggal_event' => $this->input->post('tanggal')
 		];
 		$insert = $this->catatan_model->insert($data);
+		if ($insert == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
+
+	function insertProject()
+	{
+		$projectId = $this->project_model->get_new_id();
+		$data = [
+			'project_id' => $projectId,
+			'nama_project' => $this->input->post('nama_project'),
+			'deskripsi_project' => $this->input->post('deskripsi_project'),
+			'kategori' => $this->input->post('kategori'),
+			'tgl_mulai' => $this->input->post('tgl_mulai'),
+			'tgl_selesai' => $this->input->post('tgl_selesai'),
+			'nama_perusahaan' => $this->input->post('nama_perusahaan'),
+			'email_perusahaan' => $this->input->post('email_perusahaan'),
+			'budget' => $this->input->post('budget'),
+			'karyawan_id' => $this->input->post('karyawan_id'),
+			'nama' => $this->input->post('nama'),
+			'status' => 0
+		];
+		$insert = $this->project_model->insertProject($data);
 		if ($insert == true) {
 			$response = [
 				'code' => 200
