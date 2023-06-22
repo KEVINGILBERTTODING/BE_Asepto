@@ -255,4 +255,91 @@ class Admin extends CI_Controller
 			echo json_encode($response);
 		}
 	}
+
+	function deleteProject()
+	{
+		$id = $this->input->post('id');
+		$delete = $this->project_model->delete($id);
+		if ($delete == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
+
+	function updateProject()
+	{
+
+		$id = $this->input->post('id');
+
+		$data = [
+			'nama_project' => $this->input->post('nama_project'),
+			'deskripsi_project' => $this->input->post('deskripsi_project'),
+			'kategori' => $this->input->post('kategori'),
+			'tgl_mulai' => $this->input->post('tgl_mulai'),
+			'tgl_selesai' => $this->input->post('tgl_selesai'),
+			'nama_perusahaan' => $this->input->post('nama_perusahaan'),
+			'email_perusahaan' => $this->input->post('email_perusahaan'),
+			'budget' => $this->input->post('budget'),
+			'karyawan_id' => $this->input->post('karyawan_id'),
+			'nama' => $this->input->post('nama')
+		];
+		$update = $this->project_model->updateProject($id, $data);
+		if ($update == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
+
+	function projectDone()
+	{
+		$id = $this->input->post('id');
+		$id = $this->input->post('id');
+		$config['upload_path']          = './assets/uploads/project/';
+		$config['allowed_types']        = 'jpg|png|jpeg';
+		$config['max_size']             = 5000;
+
+
+		$this->load->library('upload', $config);
+		if (!$this->upload->do_upload('image')) {
+			$response = [
+				'code' => 404,
+				'message' => 'Format file tidak sesuai'
+			];
+			echo json_encode($response);
+		} else {
+
+			$data = array('upload_data' => $this->upload->data());
+			$file_name = $data['upload_data']['file_name'];
+			$data = [
+				'gambar_project' => $file_name,
+				'status' => 1
+			];
+			$update = $this->project_model->updateProject($id, $data);
+			if ($update == true) {
+				$response = [
+					'code' => 200
+				];
+				echo json_encode($response);
+			} else {
+				$response = [
+					'code' => 404
+				];
+				echo json_encode($response);
+			}
+		}
+	}
 }

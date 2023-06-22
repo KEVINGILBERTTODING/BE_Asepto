@@ -80,4 +80,26 @@ class Project_model extends CI_Model
 
 		return $new_id;
 	}
+
+	function delete($id)
+	{
+		$this->db->where('id', $id);
+		$delete = $this->db->delete('project');
+		if ($delete) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function updateProject($id, $data)
+	{
+		$this->db->where('id', $id);
+		$update = $this->db->update('project', $data);
+		if ($update) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
