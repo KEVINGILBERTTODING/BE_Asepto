@@ -15,6 +15,7 @@ class Admin extends CI_Controller
 		$this->load->model('api/karyawan_model');
 		$this->load->model('api/feedback_model');
 		$this->load->model('api/catatan_model');
+		$this->load->model('api/task_model');
 	}
 
 	function getProject()
@@ -340,6 +341,35 @@ class Admin extends CI_Controller
 				];
 				echo json_encode($response);
 			}
+		}
+	}
+
+	function getProgress()
+	{
+		$id = $this->input->get('id');
+		echo json_encode($this->progress_model->getProgress($id));
+	}
+
+	function insertTask()
+	{
+		$data = [
+			'project_id' => $this->input->post('project_id'),
+			'task_name' => $this->input->post('task_name'),
+			'karyawan_id' => $this->input->post('karyawan_id'),
+			'created_at' => date('Y-m-d H:i:s'),
+			'updated_at' => date('Y-m-d H:i:s'),
+		];
+		$insert = $this->task_model->insertTask($data);
+		if ($insert == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
 		}
 	}
 }

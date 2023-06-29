@@ -21,6 +21,15 @@ class Progress_model extends CI_Model
 		return $this->db->get()->result();
 	}
 
+	function getProgress($idProject)
+	{
+		$this->db->select('progress.*, karyawan.jabatan as jabatan_karyawan, karyawan.nama as nama');
+		$this->db->from('progress');
+		$this->db->join('karyawan', 'karyawan.karyawan_id = progress.karyawan_id', 'left');
+		$this->db->where('progress.project_id', $idProject);
+		return $this->db->get()->result();
+	}
+
 	function updateProgress($id, $data)
 	{
 		$this->db->where('progress_id', $id);
