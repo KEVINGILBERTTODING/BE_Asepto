@@ -395,4 +395,25 @@ class Admin extends CI_Controller
 			echo json_encode($response);
 		}
 	}
+
+	function updateTask()
+	{
+		$id = $this->input->post('id');
+		$data = [
+			'task_name' => $this->input->post('task_name'),
+			'updated_at' => date('Y-m-d H:i:s')
+		];
+		$update = $this->task_model->updateTask($id, $data);
+		if ($update == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
 }
