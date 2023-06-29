@@ -372,4 +372,27 @@ class Admin extends CI_Controller
 			echo json_encode($response);
 		}
 	}
+
+	function getTaskByProject()
+	{
+		$id = $this->input->get('id');
+		echo json_encode($this->task_model->getTaskByProject($id));
+	}
+
+	function deleteTask()
+	{
+		$id = $this->input->post('id');
+		$delete = $this->task_model->deleteTask($id);
+		if ($delete == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
 }
