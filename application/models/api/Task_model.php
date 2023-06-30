@@ -49,10 +49,27 @@ class Task_model extends CI_Model
 
 		$this->db->where('task_id', $id);
 		$update = $this->db->update('task', $data);
-		if ($update == true) {
+		if ($update) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+
+	function getTotalTask($projectId)
+	{
+		$this->db->select('*');
+		$this->db->from('task');
+		$this->db->where('project_id', $projectId);
+		return $this->db->get()->num_rows();
+	}
+
+	function getTotalTaskDone($projectId)
+	{
+		$this->db->select('*');
+		$this->db->from('task');
+		$this->db->where('project_id', $projectId);
+		$this->db->where('status', 1);
+		return $this->db->get()->num_rows();
 	}
 }

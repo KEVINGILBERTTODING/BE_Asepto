@@ -15,6 +15,7 @@ class Karyawan extends CI_Controller
 		$this->load->model('api/karyawan_model');
 		$this->load->model('api/feedback_model');
 		$this->load->model('api/catatan_model');
+		$this->load->model('api/task_model');
 	}
 
 	function getMyProject()
@@ -114,5 +115,66 @@ class Karyawan extends CI_Controller
 	function getCatatan()
 	{
 		echo json_encode($this->catatan_model->getAllCatatan());
+	}
+
+	function getTotalProgress()
+	{
+		$projectId = $this->input->get('project_id');
+		$totalTask = $this->task_model->getTotalTask($projectId);
+		$totalTaskDone = $this->task_model->getTotalTaskDone($projectId);
+		$totalProgress = round(($totalTaskDone / $totalTask) * 100);
+		$data = [
+			'code' => 200,
+			'progress' => $totalProgress
+		];
+		echo json_encode($data);
+	}
+
+	function taskCompleted()
+	{
+		$id = $this->input->post('id');
+		$data  = [
+			'status' => 1,
+			'keterangan' => $this->input->post('keterangan'),
+			'date_post' => date('Y-m-d H:i:s'),
+			'updated_at' => date('Y-m-d H:i:s')
+		];
+
+		$update = $this->task_model->updateTask($id, $data);
+		if ($update == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
+
+	function taskUnCompleted()
+	{
+		$id = $this->input->post('id');
+		$data  = [
+			'status' => 0,
+			'keterangan' => null,
+			'date_post' => null,
+			'updated_at' => date('Y-m-d H:i:s')
+		];
+
+		$update = $this->task_model->updateTask($id, $data);
+		if ($update == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
 	}
 }

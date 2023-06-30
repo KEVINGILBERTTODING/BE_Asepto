@@ -14,15 +14,17 @@ class Project_model extends CI_Model
 	function getProjectByUserId($id, $status)
 	{
 		if ($status == 'all') {
-			$this->db->select('*');
+			$this->db->select('project.*, , karyawan.nama');
 			$this->db->from('project');
-			$this->db->where('karyawan_id', $id);
+			$this->db->join('karyawan', 'karyawan.karyawan_id = project.karyawan_id', 'left');
+			$this->db->where('project.karyawan_id', $id);
 			return $this->db->get()->result();
 		} else {
-			$this->db->select('*');
+			$this->db->select('project.*, , karyawan.nama');
 			$this->db->from('project');
-			$this->db->where('karyawan_id', $id);
-			$this->db->where('status', $status);
+			$this->db->join('karyawan', 'karyawan.karyawan_id = project.karyawan_id', 'left');
+			$this->db->where('project.karyawan_id', $id);
+			$this->db->where('project.status', $status);
 			return $this->db->get()->result();
 		}
 	}
@@ -30,24 +32,27 @@ class Project_model extends CI_Model
 	function getProjectDetail($id)
 	{
 
-		$this->db->select('*');
+		$this->db->select('project.*, , karyawan.nama');
 		$this->db->from('project');
-		$this->db->where('project_id', $id);
+		$this->db->join('karyawan', 'karyawan.karyawan_id = project.karyawan_id', 'left');
+		$this->db->where('project.project_id', $id);
 		return $this->db->get()->row_array();
 	}
 
 	function getProject($status)
 	{
 		if ($status == 'all') {
-			$this->db->select('*');
+			$this->db->select('project.*, , karyawan.nama');
 			$this->db->from('project');
-			$this->db->order_by('id', 'desc');
+			$this->db->join('karyawan', 'karyawan.karyawan_id = project.karyawan_id', 'left');
+			$this->db->order_by('project.id', 'desc');
 			return $this->db->get()->result();
 		} else {
-			$this->db->select('*');
+			$this->db->select('project.*, , karyawan.nama');
 			$this->db->from('project');
-			$this->db->where('status', $status);
-			$this->db->order_by('id', 'desc');
+			$this->db->join('karyawan', 'karyawan.karyawan_id = project.karyawan_id', 'left');
+			$this->db->where('project.status', $status);
+			$this->db->order_by('project.id', 'desc');
 			return $this->db->get()->result();
 		}
 	}
